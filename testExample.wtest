@@ -1,9 +1,37 @@
-import example.pepita
+import mensajeria.*
+import mensajeros.*
+describe "group of tests for mensajeria" {
 
-describe "group of tests for pepita" {
-
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+  // 1)
+  test "Averiguar si al menos uno de sus mensajeros puede entregar el paquete" {
+    paqueteOriginal.propietario("Neo")
+    assert.that(mensajero.puedePasar(paquete()))
   }
+
+  // 2)
+  test "Obtener todos los mensajeros que pueden llevar un paquete dado"{
+    assert.that(mensajeros.all(puedePasar(paqueteDado)))
+  }
+
+  // 3)
+  test "Saber si una mensajería tiene sobrepeso. Esto sucede si el promedio del peso de los mensajeros es superior a 500 Kg." {
+    assert.that(mensajeros.sum(peso()))
+  }
+
+  // 4)
+  
+
+  // 5)
+  test "Conocer la facturación de la empresa, que es el total ganado por los paquetes enviados." {
+    assert.that(empresaDeMensajeria.facturacion() >= 0)
+  }
+
+  // 6)
+  test "Dado un conjunto de paquetes, enviarlos a todos." {
+    paquetes.clear()
+    assert.that(paquetes.isEmpty())
+  }
+
+  // 7)
 
 }
