@@ -1,3 +1,4 @@
+//Parte 3
 object paquetito {
   method precio() = 0
   var property propietario = ninguno 

@@ -1,11 +1,12 @@
-import mensajeria.*
-import mensajeros.*
+import mensajeros1.*
+import mensajeros2.*
+import mensajeros3.*
 describe "group of tests for mensajeria" {
 
   // 1)
   test "Averiguar si al menos uno de sus mensajeros puede entregar el paquete" {
-    paqueteOriginal.propietario("Neo")
-    assert.that(mensajero.puedePasar(paquete()))
+    paqueteOriginal.propietario("chucknorris")
+    assert.that(mensajero.puedePasar(chucknorris))
   }
 
   // 2)
@@ -35,5 +36,14 @@ describe "group of tests for mensajeria" {
   // 7)
   test "" {
     
+  }
+
+  // 8)
+
+  // 9)
+  test "Agregar un nuevo mensajero y un nuevo paquete y garantizar que todo siga funcionando." {
+    empresaDeMensajeria.contratar(neo)
+    empresaDeMensajeria.agregar.(paqueteOriginal)
+
   }
 }
