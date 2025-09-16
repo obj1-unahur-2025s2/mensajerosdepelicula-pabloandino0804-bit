@@ -1,15 +1,13 @@
 import mensajeros1.*
-import Unificacion.*
 
 describe "TestPaquetes" {
   test "Que roberto (90kg) puede llevar un paquete que está pago en un camión que tiene un acopladoQue roberto (90kg) puede llevar un paquete que está pago en un camión que tiene un acoplado" {
     camion.acople(1)
     roberto.vehiculo(camion)
-    roberto.peso()
     puentedeBrooklyn.puedePasar(roberto)
     paquete.cambiarSiEstaPago(true)
     paquete.estaPago()
-    assert.that()
+    assert.equals(90, roberto.peso())
   }
   test "Que neo con crédito no puede llevar un paquete que no está pago a la matrix" {
     neo.cambiarCredito(true)
