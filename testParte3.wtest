@@ -1,9 +1,8 @@
-import Unificacion.*
 import mensajeros1.*
 import mensajeros2.*
 import mensajeros3.*
-describe "group of tests for mensajeria" {
 
+describe "group of tests for mensajeria" {
   // 1)
   test "Averiguar si al menos uno de sus mensajeros puede entregar el paquete" {
     assert.that(empresaDeMensajeria.mensajeros().any{mensajero => puenteDeBrooklyn.puedePasar(mensajero)})
@@ -39,9 +38,9 @@ describe "group of tests for mensajeria" {
   // 8)
 
   // 9)
-  test "Agregar un nuevo mensajero y un nuevo paquete y garantizar que todo siga funcionando." {
-    empresaDeMensajeria.contratar(neo)
-    empresaDeMensajeria.paquetes.add(paqueteOriginal)
-    assert.that(not )
-  }
+  //test "Agregar un nuevo mensajero y un nuevo paquete y garantizar que todo siga funcionando." {
+  //  empresaDeMensajeria.contratar(neo)
+  //  empresaDeMensajeria.paquetes.add(paqueteOriginal)
+  //  assert.that()
+  //}
 }
