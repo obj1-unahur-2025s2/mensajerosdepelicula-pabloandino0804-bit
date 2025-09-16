@@ -5,38 +5,37 @@ import mensajeros3.*
 describe "group of tests for mensajeria" {
   // 1)
   test "Averiguar si al menos uno de sus mensajeros puede entregar el paquete" {
-    assert.that(empresaDeMensajeria.mensajeros().any{mensajero => puenteDeBrooklyn.puedePasar(mensajero)})
+    assert.that(empresaDeMensajeria.mensajeros.any{mensajero => puenteDeBrooklyn.puedePasar(mensajero)})
   }
 
   // 2)
   test "Obtener todos los mensajeros que pueden llevar un paquete dado"{
-    assert.that(empresaDeMensajeria.mensajeros().all{mensajero => puenteDeBrooklyn.puedePasar(mensajero)})
+    assert.that(empresaDeMensajeria.mensajeros.all{mensajero => puenteDeBrooklyn.puedePasar(mensajero)})
   }
 
   // 3)
   test "Saber si una mensajería tiene sobrepeso. Esto sucede si el promedio del peso de los mensajeros es superior a 500 Kg." {
-    assert.that(empresaDeMensajeria.mensajeros().sum{mensajero => mensajero.peso()} > 500)
+    assert.that(empresaDeMensajeria.mensajeros.sum{mensajero => mensajero.peso()} > 500)
   }
 
   // 4)
-  test 
-
+  test "Hacer que la empresa de mensajería envíe un paquete."{
+    empresaDeMensajeria.mensajeros.find{empleado => puenteDeBrooklyn.puedePasar(empleado)}
+    assert.that(booleanExpression)
+  }
   // 5)
   test "Conocer la facturación de la empresa, que es el total ganado por los paquetes enviados." {
-    assert.that(empresaDeMensajeria.paquetesEnviados().sum{paquete => paquete.precio()} >= 0)
+    empresaDeMensajeria.paquetesEnviados.sum{paquete => paquete.precio()}
+    assert.that(empresaDeMensajeria.paquetesEnviados.sum{paquete => paquete.precio()} >= 0)
   }
 
   // 6)
   test "Dado un conjunto de paquetes, enviarlos a todos." {
-    empresaDeMensajeria.paquetes().forEach{paquete => paquetesEnviados.add(paquete)}
-    empresaDeMensajeria.paquetes().clear()
-    assert.that(paquetes().isEmpty())
+    empresaDeMensajeria.paquetes.forEach{paquete => empresaDeMensajeria.enviar(paquete)}
+    assert.that(empresaDeMensajeria.paquetes.isEmpty())
   }
-
   // 7)
-
   // 8)
-
   // 9)
   //test "Agregar un nuevo mensajero y un nuevo paquete y garantizar que todo siga funcionando." {
   //  empresaDeMensajeria.contratar(neo)

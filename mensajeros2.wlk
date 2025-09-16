@@ -1,5 +1,6 @@
 import mensajeros1.*
 import mensajeros3.*
+
 object empresaDeMensajeria {
   const mensajeros = [roberto, chuckNorris, neo]
   const paquetesEnviados = #{paqueteOriginal}
@@ -9,10 +10,11 @@ object empresaDeMensajeria {
     paquetes.add(unPaquete)
   }
 
-  method enviar(unPaquete){
+  method enviar(unPaquete) {
     paquetesEnviados.add(unPaquete)
     paquetes.remove(unPaquete)
   }
+
   method contratar(unMensajero) {
     mensajeros.add(unMensajero)
   }
