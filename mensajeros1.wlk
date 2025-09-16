@@ -1,14 +1,13 @@
 object neo  {
-  var credito = true
+  var credito = 100
   method peso() = 0
   method cambiarCredito(unCredito) {
     credito = unCredito
   }
-  method puedeLlamar() = credito
+  method puedeLlamar() = credito > 1
 }
 object chuckNorris {
-  method peso()
-  = 80
+  method peso() = 80
   method puedeLlamar() = true
 }
 object roberto {
@@ -35,14 +34,14 @@ object camion {
   }
 }
 object paquete {
-  var pago =true
+  var pago = true
   method cambiarSiEstaPago(unPago) {
     pago = unPago
   }
   method estaPago() = pago
 }
 
-object puentedeBrooklyn {
+object puenteDeBrooklyn {
   method puedePasar(mensajero) {
    return mensajero.peso().between(0, 1000)
   }
