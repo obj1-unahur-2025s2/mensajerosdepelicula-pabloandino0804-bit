@@ -1,4 +1,4 @@
-import. mensajeros1.*
+import mensajeros1.*
 object empresaDeMensajeria {
   const property mensajeros = ["roberto","neo","chuck"]
 
