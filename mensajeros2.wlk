@@ -3,8 +3,8 @@ import mensajeros3.*
 
 object empresaDeMensajeria {
   const mensajeros = [roberto, chuckNorris, neo]
-  const paquetesEnviados = #{paqueteOriginal}
-  const paquetes = #{paquetito}
+  const paquetesEnviados = [paqueteOriginal]
+  const paquetes = [paquetito]
 
   method agregar(unPaquete) {
     paquetes.add(unPaquete)

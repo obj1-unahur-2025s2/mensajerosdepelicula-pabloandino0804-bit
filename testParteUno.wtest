@@ -3,11 +3,10 @@ import mensajeros1.*
 describe "TestPaquetes" {
   test "Que roberto (90kg) puede llevar un paquete que está pago en un camión que tiene un acopladoQue roberto (90kg) puede llevar un paquete que está pago en un camión que tiene un acoplado" {
     camion.acople(1)
-    roberto.vehiculo(camion)
-    puenteDeBrooklyn.puedePasar(roberto)
+    roberto.cambiarVehiculo(camion)
+    roberto.peso()
     paquete.cambiarSiEstaPago(true)
-    paquete.estaPago()
-    assert.equals(90, roberto.peso())
+    assert.that(puenteDeBrooklyn.puedePasar(roberto) and paquete.estaPago())
   }
   test "Que neo con crédito no puede llevar un paquete que no está pago a la matrix" {
     neo.cambiarCredito(1000)
