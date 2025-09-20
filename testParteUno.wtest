@@ -6,14 +6,16 @@ describe "TestPaquetes" {
     paquete.registrarPago()
     paquete.cambiarDestino(puenteDeBrooklyn)
     roberto.cambiarVehiculo(camion)
-    camion.acoplado(1)
-    assert.that(paquete.estaPago() and paquete.puedeEntregarse(roberto))
+    camion.acople(1)
+    assert.that(paquete.estaPago())
+    assert.that(paquete.puedeEntregarse(roberto))
     
   }
 
   test "Que neo con crédito no puede llevar un paquete que no está pago a la matrix" {
     neo.cambiarCredito(1000)
-    paquete.registrarPago()
+    paquete.cambiarDestino(laMatrix)
+    paquete.cancelarPago()
     assert.notThat(paquete.estaPago())
   }
 }

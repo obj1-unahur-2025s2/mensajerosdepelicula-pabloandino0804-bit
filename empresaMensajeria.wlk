@@ -11,14 +11,15 @@ object empresaDeMensajeria {
   method mensajeros() = mensajeros
   method paquetesEnviados() = paquetesEnviados
   method paquetesPendientes() = paquetesPendientes
-  method paquetes = paquetes
+  method paquetes() = paquetes
+
   // Funciones de la parte 2
   method contratar(unMensajero) {
     mensajeros.add(unMensajero)
   }
 
   method despedir(unMensajero) {
-  mensajeros.remove(unMensajero)
+    mensajeros.remove(unMensajero)
   }
 
   method despedirATodos() {
@@ -55,7 +56,7 @@ object empresaDeMensajeria {
 
   // 4)
   method enviarPaqueteAUnMensajeroSiHay(unPaquete) {
-    if(self.algunMensajeroPuedeEntregar(unPaquete)) {
+    if(self.algunoPuedeEntregar(unPaquete)) {
       paquetesEnviados.add(unPaquete)
     }
     else{
@@ -74,8 +75,14 @@ object empresaDeMensajeria {
     paquetes.clear()
   }
 
-  method cantPaquetes(){
-    return paquetes.size()
+  // 7) 
+  method paquetePendienteMasCaro() {
+    return paquetesPendientes.max{paquete => paquete.precio()}
+  }
+
+  method EnviarPaquetePendiente(unPaquete) {
+    paquetesPendientes.remove(unPaquete)
+    paquetesEnviados.add(unPaquete)
   }
 }
 

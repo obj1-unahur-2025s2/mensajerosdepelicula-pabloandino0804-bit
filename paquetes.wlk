@@ -12,9 +12,7 @@ object paquetito {
     destino = unDestino
   }
 
-  method puedeEntegarse(unMensajero) {
-    self.estaPago() and puenteDeBrooklyn.puedePasar(unMensajero)
-  }
+  method puedeEntregarse(unMensajero) = self.estaPago() and puenteDeBrooklyn.puedePasar(unMensajero)
 }
 
 object paqueton {
@@ -34,13 +32,15 @@ object paqueton {
     estaPago = true
   }
 
+  method cancelarPago() {
+    estaPago = false
+  }
+
   method añadirDestino(unDestino) {
     destinos.add(unDestino)
   }
 
-  method puedeEntegarse(unMensajero) {
-    self.estaPago() and puenteDeBrooklyn.puedePasar(unMensajero)
-  }
+  method puedeEntregarse(unMensajero) = self.estaPago() and puenteDeBrooklyn.puedePasar(unMensajero)
 }
 
 object paquete {
@@ -57,7 +57,9 @@ object paquete {
     estaPago = true
   }
   
-  method puedeEntegarse(unMensajero) {
-    estaPago and puenteDeBrooklyn.puedePasar(unMensajero)
+  method cancelarPago() {
+    estaPago = false
   }
+
+  method puedeEntregarse(unMensajero) = estaPago and puenteDeBrooklyn.puedePasar(unMensajero)
 }

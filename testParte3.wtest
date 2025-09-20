@@ -6,42 +6,56 @@ import paquetes.*
 describe "Pruebas de mensajeria" {
   // 1)
   test "Averiguar si al menos uno de sus mensajeros puede entregar el paquete" {
+    empresaDeMensajeria.contratar(roberto)
+    empresaDeMensajeria.paquetes().add(paquete)
     assert.that(empresaDeMensajeria.algunoPuedeEntregar(paquetito))
   }
 
   // 2)
   test "Obtener todos los mensajeros que pueden llevar un paquete dado"{
+    empresaDeMensajeria.contratar(roberto)
+    empresaDeMensajeria.paquetes().add(paquete)
     assert.that(empresaDeMensajeria.todosPuedeEntregar(paquete))
   }
 
   // 3)
   test "Saber si una mensajería tiene sobrepeso. Esto sucede si el promedio del peso de los mensajeros es superior a 500 Kg." {
+    empresaDeMensajeria.contratar(roberto)
+    empresaDeMensajeria.contratar(chuckNorris)
+    empresaDeMensajeria.contratar(neo)
     assert.that(empresaDeMensajeria.pesoTotal() > 500)
   }
 
   // 4)
   test "Hacer que la empresa de mensajería envíe un paquete si hay un mensajero dado."{
-    empresaDeMensajeria.enviarPaqueteAUnMensajeroSiHay()
-    assert.notThat(paquetesPendientes.isEmpty() or paquetesEnviados.isEmpty())
+    empresaDeMensajeria.contratar(neo)
+    empresaDeMensajeria.enviarPaqueteAUnMensajeroSiHay(paquete)
+    assert.notThat(empresaDeMensajeria.paquetesPendientes().isEmpty() or empresaDeMensajeria.paquetesEnviados().isEmpty())
   }
 
   // 5)
   test "Conocer la facturación de la empresa, que es el total ganado por los paquetes enviados." {
+    empresaDeMensajeria.paquetesPendientes().add(paquete)
+    empresaDeMensajeria.paquetesPendientes().add(paqueton)
+    empresaDeMensajeria.paquetesPendientes().add(paquetito)
     assert.that(empresaDeMensajeria.facturacion() > 0)
   }
 
   // 6)
   test "Dado un conjunto de paquetes, enviarlos a todos." {
+    empresaDeMensajeria.paquetesPendientes().add(paquete)
+    empresaDeMensajeria.paquetesPendientes().add(paqueton)
+    empresaDeMensajeria.paquetesPendientes().add(paquetito)
     empresaDeMensajeria.enviarTodosLosPaquetes()
-    assert.equals(0, empresaDeMensajeria.cantPaquetes())
+    assert.equals(0, empresaDeMensajeria.paquetes().size())
   }
 
   // 7)
-  // 8)
-  // 9)
-  /*test "Agregar un nuevo mensajero y un nuevo paquete y garantizar que todo siga funcionando." {
-    mensajeros.add(neo)
-    paquetes.add(paqueteOriginal)
-    assert.that(mensajeros.contains(neo) and paquetes.contains(paqueteOriginal))
-  }*/
+  test "Encontrar el paquete pendiente más caro y enviarlo, actualizando los pendientes en caso de haberlo podido enviar."{
+    empresaDeMensajeria.paquetesPendientes().add(paquetito)
+    empresaDeMensajeria.paquetesPendientes().add(paqueton)
+    empresaDeMensajeria.paquetesPendientes().add(paquete)
+    empresaDeMensajeria.EnviarPaquetePendiente(empresaDeMensajeria.paquetePendienteMasCaro())
+    assert.notThat(empresaDeMensajeria.paquetesPendientes().contains(paqueton))
+  }
 }
