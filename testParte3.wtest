@@ -21,6 +21,8 @@ describe "Pruebas de mensajeria" {
   // 3)
   test "Saber si una mensajería tiene sobrepeso. Esto sucede si el promedio del peso de los mensajeros es superior a 500 Kg." {
     empresaDeMensajeria.contratar(roberto)
+    roberto.cambiarVehiculo(camion)
+    camion.acople(1)
     empresaDeMensajeria.contratar(chuckNorris)
     empresaDeMensajeria.contratar(neo)
     assert.that(empresaDeMensajeria.pesoTotal() > 500)
@@ -30,7 +32,7 @@ describe "Pruebas de mensajeria" {
   test "Hacer que la empresa de mensajería envíe un paquete si hay un mensajero dado."{
     empresaDeMensajeria.contratar(neo)
     empresaDeMensajeria.enviarPaqueteAUnMensajeroSiHay(paquete)
-    assert.notThat(empresaDeMensajeria.paquetesPendientes().isEmpty() or empresaDeMensajeria.paquetesEnviados().isEmpty())
+    assert.notThat(empresaDeMensajeria.paquetesPendientes().isEmpty() and empresaDeMensajeria.paquetesEnviados().isEmpty())
   }
 
   // 5)
