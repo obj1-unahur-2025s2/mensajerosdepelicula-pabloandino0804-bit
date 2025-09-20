@@ -35,17 +35,17 @@ describe "Pruebas de mensajeria" {
 
   // 5)
   test "Conocer la facturación de la empresa, que es el total ganado por los paquetes enviados." {
-    empresaDeMensajeria.paquetesPendientes().add(paquete)
-    empresaDeMensajeria.paquetesPendientes().add(paqueton)
-    empresaDeMensajeria.paquetesPendientes().add(paquetito)
+    empresaDeMensajeria.paquetesEnviados().add(paquete)
+    empresaDeMensajeria.paquetesEnviados().add(paqueton)
+    empresaDeMensajeria.paquetesEnviados().add(paquetito)
     assert.that(empresaDeMensajeria.facturacion() > 0)
   }
 
   // 6)
   test "Dado un conjunto de paquetes, enviarlos a todos." {
-    empresaDeMensajeria.paquetesPendientes().add(paquete)
-    empresaDeMensajeria.paquetesPendientes().add(paqueton)
-    empresaDeMensajeria.paquetesPendientes().add(paquetito)
+    empresaDeMensajeria.paquetes().add(paquete)
+    empresaDeMensajeria.paquetes().add(paqueton)
+    empresaDeMensajeria.paquetes().add(paquetito)
     empresaDeMensajeria.enviarTodosLosPaquetes()
     assert.equals(0, empresaDeMensajeria.paquetes().size())
   }

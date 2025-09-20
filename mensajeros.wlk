@@ -19,10 +19,7 @@ object roberto {
   method peso() = peso + vehiculo.peso()
   method cambiarVehiculo(unvehiculo){
     vehiculo = unvehiculo
-  }
-  method vehiculo(unVehiculo){
-    self.peso() + vehiculo.peso()
-  }
+  } 
   method puedeLlamar() = false
 }
 
@@ -32,9 +29,9 @@ object bicicleta {
 }
 
 object camion {
-   var acople = 1
-  method peso() 
-    = acople * 500
+  var acople = 0
+  method peso() = acople * 500
+
   method acople(unAcople) {
     acople = unAcople
   }
