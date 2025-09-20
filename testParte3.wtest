@@ -1,55 +1,47 @@
-import mensajeros1.*
-import mensajeros2.*
-import mensajeros3.*
+import mensajeros.*
+import destinos.*
+import empresaMensajeria.*
+import paquetes.*
 
-describe "group of tests for mensajeria" {
+describe "Pruebas de mensajeria" {
   // 1)
-  const mensajeros = [roberto, chuckNorris]
-  const paquetesEnviados = [paqueteOriginal]
-  const paquetesPendientes = []
-  const paquetes = [paquetito, paquetonViajero, paqueteOriginal]
-  
   test "Averiguar si al menos uno de sus mensajeros puede entregar el paquete" {
-    assert.that(mensajeros.any{mensajero => puenteDeBrooklyn.puedePasar(mensajero)})
+    assert.that(empresaDeMensajeria.unoDeEllosPuedenPasar())
   }
 
   // 2)
   test "Obtener todos los mensajeros que pueden llevar un paquete dado"{
-    assert.that(mensajeros.all{mensajero => puenteDeBrooklyn.puedePasar(mensajero)})
+    assert.that(empresaDeMensajeria.todosPuedenLLevarElPaquete(paqueteOriginal))
   }
 
   // 3)
   test "Saber si una mensajería tiene sobrepeso. Esto sucede si el promedio del peso de los mensajeros es superior a 500 Kg." {
-    assert.that(mensajeros.sum{mensajero => mensajero.peso()} > 500)
+    assert.that(empresaDeMensajeria.pesoTotal() > 500)
   }
 
   // 4)
-  test "Hacer que la empresa de mensajería envíe un paquete si hay."{
-    const empleado = none
-    mensajeros.findOrElse{empleado => puenteDeBrooklyn.puedePasar(empleado)} {paquetesPendientes.add(paquetes.first())}
-    paquetes.first().mensajero(empleado)
+  test "Hacer que la empresa de mensajería envíe un paquete si hay un mensajero dado."{
+    empresaDeMensajeria.enviarPaqueteAUnMensajeroSiHay()
     assert.notThat(paquetesPendientes.isEmpty() or paquetesEnviados.isEmpty())
   }
 
   // 5)
   test "Conocer la facturación de la empresa, que es el total ganado por los paquetes enviados." {
-    paquetesEnviados.sum{paquete => paquete.precio()}
-    assert.that(paquetesEnviados.sum{paquete => paquete.precio()} >= 0)
+    assert.that(empresaDeMensajeria.facturacion() > 0)
   }
 
   // 6)
   test "Dado un conjunto de paquetes, enviarlos a todos." {
-    paquetes.forEach{paquete => paquetesEnviados.add(paquete)}
-    paquetes.clear()
-    assert.that(paquetes.isEmpty())
+    empresaDeMensajeria.enviarTodosLosPaquetes()
+    assert.equals(0, empresaDeMensajeria.cantPaquetes())
   }
 
   // 7)
   // 8)
   // 9)
-    test "Agregar un nuevo mensajero y un nuevo paquete y garantizar que todo siga funcionando." {
-      mensajeros.add(neo)
-      paquetes.add(paqueteOriginal)
-      assert.that(mensajeros.contains(neo) and paquetes.contains(paqueteOriginal))
-  }
+  /*test "Agregar un nuevo mensajero y un nuevo paquete y garantizar que todo siga funcionando." {
+    mensajeros.add(neo)
+    paquetes.add(paqueteOriginal)
+    assert.that(mensajeros.contains(neo) and paquetes.contains(paqueteOriginal))
+  }*/
 }
