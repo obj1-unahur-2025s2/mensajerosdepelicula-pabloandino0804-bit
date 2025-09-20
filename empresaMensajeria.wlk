@@ -3,11 +3,15 @@ import destinos.*
 import paquetes.*
 
 object empresaDeMensajeria {
-  const mensajeros = [roberto, chuckNorris, neo]
-  const paquetesEnviados = [paqueteOriginal]
+  const mensajeros = []
+  const paquetesEnviados = []
   const paquetesPendientes = []
   const paquetes = [paquetito]
 
+  method mensajeros() = mensajeros
+  method paquetesEnviados() = paquetesEnviados
+  method paquetesPendientes() = paquetesPendientes
+  method paquetes = paquetes
   // Funciones de la parte 2
   method contratar(unMensajero) {
     mensajeros.add(unMensajero)
@@ -35,13 +39,13 @@ object empresaDeMensajeria {
 
   // Funciones de la parte 3
   // 1)
-  method unoDeEllosPuedenPasar() {
-    return mensajeros.any{mensajero => puenteDeBrooklyn.puedePasar(mensajero)}
+  method algunoPuedeEntregar(unPaquete) {
+    return mensajeros.any{mensajero => unPaquete.puedeEntregarse(mensajero)}
   }
 
   // 2)
-  method todosPuedenLLevarElPaquete(unPaquete) {
-    return mensajeros.all{mensajero => puenteDeBrooklyn.puedePasar(mensajero)}
+  method todosPuedeEntregar(unPaquete) {
+    return mensajeros.all{mensajero => unPaquete.puedeEntregarse(mensajero)}
   }
 
   // 3)
@@ -50,9 +54,13 @@ object empresaDeMensajeria {
   }
 
   // 4)
-  method enviarPaqueteAUnMensajeroSiHay() {
-    const empleado = mensajeros.findOrElse{empleado => puenteDeBrooklyn.puedePasar(empleado)} {paquetesPendientes.add(paquetes.first())}
-    paquetes.first().mensajero(empleado)
+  method enviarPaqueteAUnMensajeroSiHay(unPaquete) {
+    if(self.algunMensajeroPuedeEntregar(unPaquete)) {
+      paquetesEnviados.add(unPaquete)
+    }
+    else{
+      paquetesPendientes.add(unPaquete)
+    }
   }
 
   // 5)

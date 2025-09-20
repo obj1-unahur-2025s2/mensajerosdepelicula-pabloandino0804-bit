@@ -6,12 +6,12 @@ import paquetes.*
 describe "Pruebas de mensajeria" {
   // 1)
   test "Averiguar si al menos uno de sus mensajeros puede entregar el paquete" {
-    assert.that(empresaDeMensajeria.unoDeEllosPuedenPasar())
+    assert.that(empresaDeMensajeria.algunoPuedeEntregar(paquetito))
   }
 
   // 2)
   test "Obtener todos los mensajeros que pueden llevar un paquete dado"{
-    assert.that(empresaDeMensajeria.todosPuedenLLevarElPaquete(paqueteOriginal))
+    assert.that(empresaDeMensajeria.todosPuedeEntregar(paquete))
   }
 
   // 3)

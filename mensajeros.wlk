@@ -7,10 +7,12 @@ object neo  {
   }
   method puedeLlamar() = credito > 1
 }
+
 object chuckNorris {
   method peso() = 80
   method puedeLlamar() = true
 }
+
 object roberto {
   const peso = 90
    var vehiculo = bicicleta
@@ -23,9 +25,12 @@ object roberto {
   }
   method puedeLlamar() = false
 }
+
+//Vehiculos de roberto
 object bicicleta {
   method peso() = 5
 }
+
 object camion {
    var acople = 1
   method peso() 
@@ -33,11 +38,4 @@ object camion {
   method acople(unAcople) {
     acople = unAcople
   }
-}
-object paquete {
-  var pago = true
-  method cambiarSiEstaPago(unPago) {
-    pago = unPago
-  }
-  method estaPago() = pago
 }

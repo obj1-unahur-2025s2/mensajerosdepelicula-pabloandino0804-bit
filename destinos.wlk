@@ -1,4 +1,5 @@
 import mensajeros.*
+import paquetes.*
 object puenteDeBrooklyn {
   method puedePasar(mensajero) {
    return mensajero.peso().between(0, 1000)
